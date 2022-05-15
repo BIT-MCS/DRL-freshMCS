@@ -1,0 +1,43 @@
+{
+    "acting" : {
+        "actor_envs" : 64,
+        "exploration" : "@json('exploration/per_actor_0.5_to_0.01_factor7_5p.json')"
+    },
+    "model" : "@json('models/mlp_2x64_lstm128.json')",
+    "env" : "BipedalWalkerHardcore-v3",
+    "bins": 21,
+    "env_args" : {
+        "max_episode_steps" : 1000
+    },
+    "policy_args" : {
+        "cuda" : true,
+        "num_sampling_quantiles" : 32,
+        "dueling" : true
+    },
+    "training" : {
+        "type" : "iqn",
+        "args" : {
+            "gamma" : 0.99,
+            "vf_scale_epsilon" : null,
+            "mbatch_size" : 32,
+            "nstep_train" : 20,
+            "nstep_target" : 2,
+            "target_update_freq" : 20000,
+            "lr" : 3e-4,
+            "lr_anneal" : true,
+            "adam_epsilon" : 1e-5,
+            "double_q" : true,
+            "rnn_bootstrap" : true,
+            "clip_grad" : 40.0,
+            "total_steps" : 50000000,
+            "warmup_steps" : 50000,
+            "history_mode" : {
+                "type" : "replay",
+                "args" : {
+                    "size" : 1000000,
+                    "train_frequency" : 4
+                }
+            }
+        }
+    }
+}

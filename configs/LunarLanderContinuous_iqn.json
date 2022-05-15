@@ -1,0 +1,42 @@
+{
+    "acting" : {
+        "actor_envs" : 32,
+        "exploration" : "@json('exploration/decay_0.001_2p.json')"
+    },
+    "model" : "@json('models/mlp_2x64.json')",
+    "env" : "LunarLanderContinuous-v2",
+    "bins": 21,
+    "env_args" : {
+        "max_episode_steps" : 500
+    },
+    "policy_args" : {
+        "cuda" : true,
+        "dueling" : true
+    },
+    "training" : {
+        "type" : "iqn",
+        "args" : {
+            "gamma" : 0.99,
+            "vf_scale_epsilon" : null,
+            "mbatch_size" : 32,
+            "nstep_train" : 1,
+            "nstep_target" : 10,
+            "target_update_freq" : 10000,
+            "lr" : 1e-4,
+            "lr_anneal" : true,
+            "adam_epsilon" : 1e-5,
+            "double_q" : true,
+            "rnn_bootstrap" : false,
+            "clip_grad" : 40.0,
+            "total_steps" : 50000000,
+            "warmup_steps" : 50000,
+            "history_mode" : {
+                "type" : "replay",
+                "args" : {
+                    "size" : 500000,
+                    "train_frequency" : 4
+                }
+            }
+        }
+    }
+}

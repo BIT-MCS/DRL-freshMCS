@@ -1,0 +1,7 @@
+{
+    "_comment" : "An LSTM module with 128 hidden units",
+    "type" : "lstm",
+    "args" : {
+        "num_units" : 128
+    }
+}
