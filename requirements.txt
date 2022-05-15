@@ -1,5 +1,11 @@
-ray
 gym
-pandas==1.2.0
 matplotlib
-opencv-python
+numpy
+scipy
+seaborn
+tqdm
+colorcet
+panel
+pyviz-comms
+pandas
+tensorboard
